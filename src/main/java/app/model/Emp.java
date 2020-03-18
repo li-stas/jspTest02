@@ -1,5 +1,9 @@
 package app.model;
+import app.services.LocalDateTimeAttributeConverter;
+import com.fasterxml.jackson.annotation.JsonFormat;
+
 import javax.persistence.*;
+import java.time.LocalDateTime;
 import java.util.Objects;
 
 @Entity
@@ -22,7 +26,9 @@ public class Emp {
     private int mgr; // NUMERIC(4),
 
     @Column(name = "hiredate")
-    private  java.sql.Date hiredate; // DATE NOT NULL,
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm")
+    @Convert(converter = LocalDateTimeAttributeConverter.class)
+    private LocalDateTime hiredate; // DATE NOT NULL,
 
     @Column(name = "sal")
     private float sal; // FLOAT NOT NULL,
@@ -43,7 +49,7 @@ public class Emp {
     public Emp() {
     }
 
-    public Emp(String ename, String job, int mgr,  java.sql.Date hiredate, float sal, float comm) {
+    public Emp(String ename, String job, int mgr,  LocalDateTime hiredate, float sal, float comm) {
         this.ename = ename;
         this.job = job;
         this.mgr = mgr;
@@ -53,7 +59,7 @@ public class Emp {
 
     }
 
-    public Emp(int empno, String ename, String job, int mgr,  java.sql.Date hiredate, float sal, float comm) {
+    public Emp(int empno, String ename, String job, int mgr,  LocalDateTime hiredate, float sal, float comm) {
         this.empno = empno;
         this.ename = ename;
         this.job = job;
@@ -63,7 +69,7 @@ public class Emp {
         this.comm = comm;
     }
 
-    public Emp(int empno, String ename, String job, int mgr,  java.sql.Date hiredate, float sal) {
+    public Emp(int empno, String ename, String job, int mgr,  LocalDateTime hiredate, float sal) {
         this.empno = empno;
         this.ename = ename;
         this.job = job;
@@ -104,11 +110,11 @@ public class Emp {
         this.mgr = mgr;
     }
 
-    public  java.sql.Date getHiredate() {
+    public  LocalDateTime getHiredate() {
         return hiredate;
     }
 
-    public void setHiredate(java.sql.Date hiredate) {
+    public void setHiredate(LocalDateTime hiredate) {
         this.hiredate = hiredate;
     }
 
