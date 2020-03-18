@@ -7,7 +7,7 @@ import app.services.DeptServiceImpl;
 
 import java.sql.SQLException;
 
-public class Main90AddUpDate {
+public class Main90AddUpDateDele {
     public static void main(String[] args) throws SQLException {
         DeptService deptService = new DeptServiceImpl();
 
@@ -27,6 +27,7 @@ public class Main90AddUpDate {
         dept.setDname("90-Auto");
         deptService.updateDept(dept);
 
+        deptService.deleteDept(dept);
 
     }
 }
