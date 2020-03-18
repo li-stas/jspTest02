@@ -6,8 +6,6 @@ import app.services.DeptService;
 import app.services.DeptServiceImpl;
 
 import java.sql.SQLException;
-import java.time.LocalDate;
-import java.time.format.DateTimeFormatter;
 
 public class Main90AddUpDate {
     public static void main(String[] args) throws SQLException {
@@ -20,7 +18,7 @@ public class Main90AddUpDate {
         emp9000.setDept(dept);
         dept.addEmp(emp9000);
 
-        Emp emp9001 = new Emp(9001, "OLGA", "SALESMAN",7698, java.sql.Date.valueOf("2013-09-04"), 1999);
+        Emp emp9001 = new Emp(9001, "OLGA", "SALESMAN",7698, java.sql.Date.valueOf("2013-09-04"), 1999,999);
         emp9001.setDept(dept);
         dept.addEmp(emp9001);
         deptService.updateDept(dept);
@@ -28,9 +26,5 @@ public class Main90AddUpDate {
         // обновим имя
         dept.setDname("90-Auto");
         deptService.updateDept(dept);
-    }
-    private static LocalDate ctod(String cDt, String cPict) {
-        final DateTimeFormatter dtf = DateTimeFormatter.ofPattern(cPict);
-        return LocalDate.parse(cDt, dtf);
     }
 }
